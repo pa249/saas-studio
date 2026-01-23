@@ -33,37 +33,51 @@ export const Header = () => {
     >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="font-heading text-xl font-bold text-foreground">
-            dev<span className="text-primary">.</span>portfolio
-          </a>
+          <motion.a 
+            href="#" 
+            className="font-heading text-xl font-bold text-foreground"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            Pyrothrex<span className="text-primary">.</span>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <motion.a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group"
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 {link.label}
-              </a>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              </motion.a>
             ))}
           </div>
 
           <div className="hidden md:block">
-            <Button variant="hero" size="lg" asChild>
-              <a href="#contact">Hire Me</a>
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button variant="hero" size="lg" asChild>
+                <a href="#contact">Let's Talk</a>
+              </Button>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
             className="md:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
+            whileTap={{ scale: 0.9 }}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </motion.button>
         </nav>
       </div>
 
@@ -77,21 +91,30 @@ export const Header = () => {
             className="md:hidden bg-background border-b border-border"
           >
             <div className="section-container py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
+              {navLinks.map((link, index) => (
+                <motion.a
                   key={link.href}
                   href={link.href}
                   className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
                 >
                   {link.label}
-                </a>
+                </motion.a>
               ))}
-              <Button variant="hero" size="lg" className="mt-2" asChild>
-                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Hire Me
-                </a>
-              </Button>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+              >
+                <Button variant="hero" size="lg" className="mt-2 w-full" asChild>
+                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    Let's Talk
+                  </a>
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         )}

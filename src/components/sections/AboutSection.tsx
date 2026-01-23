@@ -1,28 +1,50 @@
 import { motion } from "framer-motion";
-import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { Code2, Palette, Zap, Monitor } from "lucide-react";
 
 const highlights = [
   {
     icon: Code2,
-    title: "SaaS Development",
-    description: "Building production-ready SaaS applications from scratch",
+    title: "Frontend Development",
+    description: "Building performant, accessible interfaces with React & TypeScript",
   },
   {
-    icon: Lightbulb,
-    title: "Product Thinking",
-    description: "Focus on solving real problems, not just writing code",
+    icon: Palette,
+    title: "UI Implementation",
+    description: "Translating designs into pixel-perfect, responsive experiences",
   },
   {
-    icon: Rocket,
-    title: "Ship Fast",
-    description: "MVPs that validate ideas and iterate quickly",
+    icon: Zap,
+    title: "Performance Focus",
+    description: "Optimizing for speed, accessibility, and smooth interactions",
   },
   {
-    icon: Users,
-    title: "User-Centered",
-    description: "Every feature designed with the end user in mind",
+    icon: Monitor,
+    title: "Modern Tooling",
+    description: "Leveraging cutting-edge frameworks and development practices",
   },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut" as const,
+    },
+  },
+};
 
 export const AboutSection = () => {
   return (
@@ -39,37 +61,46 @@ export const AboutSection = () => {
             About Me
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            I'm a developer who thinks like a founder. I don't just build features — 
-            I build products that solve real problems and deliver measurable value.
+            I'm <span className="text-foreground font-semibold">Pyrothrex</span> — a frontend-focused web developer 
+            passionate about crafting beautiful, interactive digital experiences. I combine clean 
+            code with thoughtful design to build websites that are fast, accessible, and engaging.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            With experience in full-stack development and a deep understanding of SaaS 
-            business models, I help startups and businesses launch web applications that 
-            are built to scale. My focus is on clean code, intuitive UX, and shipping 
-            products that users actually want to use.
+            With a strong foundation in modern JavaScript frameworks and a keen eye for UI/UX, 
+            I specialize in turning complex requirements into intuitive interfaces. Whether it's 
+            a marketing site, web application, or interactive dashboard — I focus on performance 
+            and attention to detail.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((item, index) => (
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {highlights.map((item) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card-surface p-6 text-center"
+              variants={itemVariants}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="card-surface p-6 text-center group cursor-pointer"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <item.icon className="w-6 h-6 text-primary" />
-              </div>
+              <motion.div 
+                className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 transition-colors group-hover:bg-primary/20"
+                whileHover={{ rotate: 5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <item.icon className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+              </motion.div>
               <h3 className="font-heading font-semibold text-foreground mb-2">
                 {item.title}
               </h3>
               <p className="text-sm text-muted-foreground">{item.description}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

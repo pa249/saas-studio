@@ -11,39 +11,50 @@ const steps = [
   {
     number: "01",
     icon: MessageSquare,
-    title: "Understand the Problem",
+    title: "Discovery & Planning",
     description:
-      "We start by diving deep into your business goals, target users, and the specific problem you're solving. No code until we're aligned.",
+      "We start by understanding your project goals, target audience, and technical requirements. Clear communication ensures we're aligned from day one.",
   },
   {
     number: "02",
     icon: PenTool,
-    title: "Design the Solution",
+    title: "Design & Prototyping",
     description:
-      "I create wireframes and prototypes that map out the user journey, ensuring the solution is intuitive and achieves your goals.",
+      "I create wireframes and interactive prototypes that map out the user experience, ensuring the solution is intuitive before writing code.",
   },
   {
     number: "03",
     icon: Code2,
-    title: "Build the MVP",
+    title: "Development",
     description:
-      "With a clear plan in place, I build a functional MVP focused on core features — fast, clean, and ready to test with real users.",
+      "With a clear plan in place, I build your project using modern technologies — clean, maintainable code that's ready for production.",
   },
   {
     number: "04",
     icon: RefreshCw,
-    title: "Iterate with Feedback",
+    title: "Review & Iterate",
     description:
-      "We gather user feedback and refine the product together. This cycle ensures we're building something people actually want.",
+      "We review the work together and refine based on your feedback. This iterative process ensures the final result meets your expectations.",
   },
   {
     number: "05",
     icon: Rocket,
-    title: "Ship & Support",
+    title: "Launch & Support",
     description:
-      "Once polished, we launch your product. I provide ongoing support to ensure smooth operation and help with future iterations.",
+      "Once polished, we launch your project. I provide documentation and support to ensure everything runs smoothly post-launch.",
   },
 ];
+
+const lineVariants = {
+  hidden: { scaleY: 0 },
+  visible: {
+    scaleY: 1,
+    transition: {
+      duration: 1,
+      ease: "easeInOut" as const,
+    },
+  },
+};
 
 export const ProcessSection = () => {
   return (
@@ -60,13 +71,19 @@ export const ProcessSection = () => {
             How I Work
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A proven process that ensures we build the right thing, the right way.
+            A clear, collaborative process that delivers results.
           </p>
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
           {/* Connection line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent hidden md:block" />
+          <motion.div 
+            className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent hidden md:block origin-top"
+            variants={lineVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          />
 
           <div className="space-y-8 md:space-y-0">
             {steps.map((step, index) => (
@@ -81,11 +98,19 @@ export const ProcessSection = () => {
                 }`}
               >
                 {/* Dot on line */}
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block" />
+                <motion.div 
+                  className="absolute left-8 md:left-1/2 -translate-x-1/2 top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15, type: "spring", stiffness: 500, damping: 15 }}
+                />
 
                 {/* Content */}
-                <div
-                  className={`card-surface p-6 ${
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className={`card-surface p-6 cursor-pointer ${
                     index % 2 === 0
                       ? "md:text-right md:pr-12"
                       : "md:col-start-2 md:pl-12"
@@ -96,18 +121,25 @@ export const ProcessSection = () => {
                       index % 2 === 0 ? "md:justify-end" : ""
                     }`}
                   >
-                    <span className="text-3xl font-bold text-primary/30 font-heading">
+                    <motion.span 
+                      className="text-3xl font-bold text-primary/30 font-heading"
+                      whileHover={{ color: 'hsl(var(--primary))' }}
+                    >
                       {step.number}
-                    </span>
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    </motion.span>
+                    <motion.div 
+                      className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
+                      whileHover={{ rotate: 5, scale: 1.1, backgroundColor: 'hsl(var(--primary) / 0.2)' }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
                       <step.icon className="w-5 h-5 text-primary" />
-                    </div>
+                    </motion.div>
                   </div>
                   <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
                     {step.title}
                   </h3>
                   <p className="text-muted-foreground">{step.description}</p>
-                </div>
+                </motion.div>
 
                 {/* Empty space for alignment */}
                 {index % 2 === 0 ? (
