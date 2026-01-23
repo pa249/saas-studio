@@ -7,10 +7,12 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { CustomCursor } from "@/components/CustomCursor";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background dark">
+      <CustomCursor />
       <Header />
       <main>
         <HeroSection />
