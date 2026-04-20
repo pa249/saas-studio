@@ -56,41 +56,44 @@
   }
 
   .dark {
-    --background: 240 6% 6%;
+    /* #0E0E10 */
+    --background: 240 7% 5.5%;
     --foreground: 210 20% 98%;
 
-    --card: 240 5% 10%;
+    /* #18181B */
+    --card: 240 4% 10%;
     --card-foreground: 210 20% 98%;
 
-    --popover: 240 5% 10%;
+    --popover: 240 4% 10%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 252 100% 68%;
-    --primary-foreground: 240 6% 6%;
+    /* Warm amber accent — premium, restrained */
+    --primary: 35 96% 62%;
+    --primary-foreground: 240 7% 5.5%;
 
-    --secondary: 240 5% 14%;
+    --secondary: 240 4% 12%;
     --secondary-foreground: 210 20% 90%;
 
-    --muted: 240 5% 16%;
+    --muted: 240 4% 14%;
     --muted-foreground: 215 15% 60%;
 
-    --accent: 252 100% 68%;
-    --accent-foreground: 240 6% 6%;
+    --accent: 35 96% 62%;
+    --accent-foreground: 240 7% 5.5%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5% 18%;
-    --input: 240 5% 18%;
-    --ring: 252 100% 68%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 35 96% 62%;
 
     /* Custom tokens - dark */
-    --surface: 240 5% 10%;
-    --surface-hover: 240 5% 14%;
+    --surface: 240 4% 10%;
+    --surface-hover: 240 4% 13%;
     --text-primary: 210 20% 98%;
     --text-secondary: 215 15% 65%;
     --text-tertiary: 215 10% 50%;
-    --gradient-subtle: linear-gradient(135deg, hsl(252 100% 68% / 0.08), hsl(280 100% 60% / 0.03));
+    --gradient-subtle: linear-gradient(135deg, hsl(35 96% 62% / 0.08), hsl(20 90% 55% / 0.03));
   }
 }
 
@@ -136,7 +139,10 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400;
+    background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--foreground) / 0.7) 60%, hsl(var(--primary)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .glow-subtle {
