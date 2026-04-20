@@ -4,32 +4,27 @@ const skillCategories = [
   {
     title: "Frontend Development",
     skills: ["React", "Next.js", "TypeScript", "JavaScript"],
-    color: "from-blue-500 to-cyan-500",
-    glowColor: "group-hover:shadow-blue-500/20",
+    number: "01",
   },
   {
     title: "UI & Styling",
-    skills: ["Tailwind CSS", "CSS3", "Framer Motion", "Responsive Design"],
-    color: "from-purple-500 to-pink-500",
-    glowColor: "group-hover:shadow-purple-500/20",
+    skills: ["Tailwind CSS", "CSS3", "Framer Motion", "Three.js"],
+    number: "02",
   },
   {
     title: "Backend & APIs",
     skills: ["Node.js", "REST APIs", "PostgreSQL", "Supabase"],
-    color: "from-green-500 to-emerald-500",
-    glowColor: "group-hover:shadow-green-500/20",
+    number: "03",
   },
   {
     title: "Tools & Workflow",
-    skills: ["Git", "VS Code", "Figma", "Vercel"],
-    color: "from-orange-500 to-amber-500",
-    glowColor: "group-hover:shadow-orange-500/20",
+    skills: ["Git", "Vite", "Figma", "Vercel"],
+    number: "04",
   },
   {
-    title: "Other Skills",
-    skills: ["Electron", "AI APIs", "SEO", "Performance Optimization"],
-    color: "from-primary to-purple-500",
-    glowColor: "group-hover:shadow-primary/20",
+    title: "Craft & Detail",
+    skills: ["Motion Design", "Accessibility", "SEO", "Performance"],
+    number: "05",
   },
 ];
 
@@ -57,25 +52,27 @@ const cardVariants = {
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="section-padding relative">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-20"
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Skills & Tools
+          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-6">— Toolkit</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            The instruments
+            <span className="text-muted-foreground"> behind the work.</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The technologies and tools I use to bring ideas to life.
+          <p className="text-lg text-muted-foreground">
+            A focused stack chosen for stability, speed, and fidelity — not novelty.
           </p>
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -85,21 +82,16 @@ export const SkillsSection = () => {
             <motion.div
               key={category.title}
               variants={cardVariants}
-              whileHover={{ 
-                y: -8, 
-                transition: { duration: 0.3 } 
-              }}
-              className={`card-surface-hover p-6 group cursor-pointer transition-shadow duration-300 hover:shadow-xl ${category.glowColor}`}
+              className="bg-card/80 backdrop-blur-sm p-8 group relative transition-colors duration-500 hover:bg-card"
+              data-cursor-hover
             >
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div
-                  className={`w-3 h-3 rounded-full bg-gradient-to-r ${category.color}`}
-                  whileHover={{ scale: 1.5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                />
-                <h3 className="font-heading font-semibold text-foreground">
+              <div className="flex items-baseline justify-between mb-6">
+                <h3 className="font-heading font-semibold text-foreground text-lg">
                   {category.title}
                 </h3>
+                <span className="text-xs font-mono text-muted-foreground/50 tracking-widest">
+                  {category.number}
+                </span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
@@ -109,16 +101,15 @@ export const SkillsSection = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: skillIndex * 0.05 }}
-                    whileHover={{ 
-                      scale: 1.05,
-                      backgroundColor: 'hsl(var(--primary) / 0.15)',
-                    }}
-                    className="px-3 py-1.5 text-sm bg-secondary text-secondary-foreground rounded-lg transition-colors cursor-default"
+                    whileHover={{ y: -2 }}
+                    className="px-3 py-1.5 text-xs font-medium bg-background/50 text-foreground/80 rounded-md border border-border/60 transition-colors hover:border-primary/40 hover:text-foreground cursor-default"
                   >
                     {skill}
                   </motion.span>
                 ))}
               </div>
+              {/* hover accent line */}
+              <span className="absolute bottom-0 left-0 h-px w-0 bg-primary transition-all duration-500 group-hover:w-full" />
             </motion.div>
           ))}
         </motion.div>

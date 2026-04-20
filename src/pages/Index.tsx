@@ -8,13 +8,15 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CustomCursor } from "@/components/CustomCursor";
+import { SceneCanvas } from "@/components/three/SceneCanvas";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background dark">
+    <div className="min-h-screen bg-background dark relative">
       <CustomCursor />
+      <SceneCanvas />
       <Header />
-      <main>
+      <main className="relative">
         <HeroSection />
         <AboutSection />
         <SkillsSection />

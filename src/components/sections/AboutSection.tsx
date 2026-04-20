@@ -48,28 +48,28 @@ const itemVariants = {
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="section-padding bg-secondary/30">
+    <section id="about" className="section-padding relative">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto mb-20"
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
-            About Me
+          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-6">— About</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-8 leading-tight">
+            A developer who treats the browser
+            <span className="text-muted-foreground"> like a craft.</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            I'm <span className="text-foreground font-semibold">Pyrothrex</span> — a frontend-focused web developer 
-            passionate about crafting beautiful, interactive digital experiences. I combine clean 
-            code with thoughtful design to build websites that are fast, accessible, and engaging.
+            I write code the way a typographer kerns a headline — slowly, deliberately, and only when it serves the work.
+            My focus is the front of the front-end: the layer where design meets behavior and where most websites quietly fall apart.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            With a strong foundation in modern JavaScript frameworks and a keen eye for UI/UX, 
-            I specialize in turning complex requirements into intuitive interfaces. Whether it's 
-            a marketing site, web application, or interactive dashboard — I focus on performance 
-            and attention to detail.
+            Every project I take on is built around three non-negotiables: visual fidelity to the design,
+            interactions that feel weighted and intentional, and performance budgets that don't slip.
+            No frameworks worship, no template reuse — just considered, hand-built interfaces.
           </p>
         </motion.div>
 

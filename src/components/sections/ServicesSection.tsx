@@ -71,20 +71,22 @@ const cardVariants = {
 
 export const ServicesSection = () => {
   return (
-    <section id="services" className="section-padding">
+    <section id="services" className="section-padding relative">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-20"
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-            What I Do
+          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-6">— Engagements</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            How we can
+            <span className="text-muted-foreground"> work together.</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Web development services focused on quality, performance, and user experience.
+          <p className="text-lg text-muted-foreground">
+            I take on a small number of projects each quarter so each one gets the attention it deserves.
           </p>
         </motion.div>
 

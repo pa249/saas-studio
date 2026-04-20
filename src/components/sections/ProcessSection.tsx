@@ -58,20 +58,22 @@ const lineVariants = {
 
 export const ProcessSection = () => {
   return (
-    <section id="process" className="section-padding bg-secondary/30">
+    <section id="process" className="section-padding relative">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto text-center mb-20"
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-            How I Work
+          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-6">— Process</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            Slow at the start.
+            <span className="text-muted-foreground"> Fast in the middle.</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A clear, collaborative process that delivers results.
+          <p className="text-lg text-muted-foreground">
+            A predictable five-step rhythm — refined over years of shipping interfaces.
           </p>
         </motion.div>
 
