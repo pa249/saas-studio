@@ -54,13 +54,15 @@ export const ContactSection = () => {
               transition={{ duration: 0.5 }}
               className="flex flex-col justify-center"
             >
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Want to work together?<br />
-                <span className="text-gradient">Let's build something.</span>
+              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-6">— Contact</p>
+              <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+                Have something
+                <br />
+                <span className="text-gradient">worth building?</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Have a project in mind or just want to chat about web development? 
-                I'd love to hear from you.
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                I respond to every serious inquiry within 24 hours. Tell me about the project,
+                the deadline, and what "done" looks like — I'll tell you honestly whether I'm the right fit.
               </p>
 
               <div className="space-y-4">
