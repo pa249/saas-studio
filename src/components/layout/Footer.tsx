@@ -18,7 +18,7 @@ export const Footer = () => {
             viewport={{ once: true }}
           >
             <a href="#" className="font-heading text-xl font-bold text-foreground">
-              Pyrothrex<span className="text-primary">.</span>
+              Santo<span className="text-primary">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-1">
               Frontend Developer & UI Engineer
@@ -54,7 +54,7 @@ export const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            © {new Date().getFullYear()} Pyrothrex. All rights reserved.
+            © {new Date().getFullYear()} Santo. All rights reserved.
           </motion.p>
         </div>
       </div>

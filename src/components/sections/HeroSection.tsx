@@ -84,7 +84,7 @@ export const HeroSection = () => {
             variants={textRevealVariants}
             className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
           >
-            I'm <span className="text-foreground font-medium">Pyrothrex</span> — a frontend developer
+            I'm <span className="text-foreground font-medium">Santo</span> — a frontend developer
             building precise, performant interfaces for teams who care about every pixel,
             every interaction, every millisecond.
           </motion.p>

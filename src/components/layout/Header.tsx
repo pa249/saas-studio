@@ -39,7 +39,7 @@ export const Header = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            Pyrothrex<span className="text-primary">.</span>
+            Santo<span className="text-primary">.</span>
           </motion.a>
 
           {/* Desktop Navigation */}
